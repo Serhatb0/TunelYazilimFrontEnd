@@ -1,0 +1,22 @@
+/* .dark-bg{
+    background-image: linear-gradient(rgba(0,0,0,.9),rgba(0,0,0,.9)),url("../img/main_bg.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+} */
+#hero .div{
+    height: 50vh;
+}
+
+@media (max-width:500px){
+    .response{
+        float: left;
+    }
+}
+
+.carousel-wrapper,
+.carousel,
+.carousel > .slider-wrapper,
+.carousel > .slider-wrapper > .slider {
+  height: 30em;
+}
