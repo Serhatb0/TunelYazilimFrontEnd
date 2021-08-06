@@ -1,70 +1,49 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Ekran Görüntüsü (127)](https://user-images.githubusercontent.com/77425377/128518042-957b603b-0e21-4666-b61d-76a99411946e.png)
+![Ekran Görüntüsü (128)](https://user-images.githubusercontent.com/77425377/128518046-46bc1d03-8f88-4271-8e74-f072e83ac134.png)
+![Ekran Görüntüsü (129)](https://user-images.githubusercontent.com/77425377/128518052-859edeb5-5894-4dea-bb2f-27b9c5c82bbd.png)
+![Ekran Görüntüsü (130)](https://user-images.githubusercontent.com/77425377/128518057-f666d29c-2b29-49f9-9760-ee8a7227b723.png)
+![Ekran Görüntüsü (131)](https://user-images.githubusercontent.com/77425377/128518062-9fb2a3a6-b05d-48b3-b2f8-5e7d0f5f1a23.png)
+![Ekran Görüntüsü (132)](https://user-images.githubusercontent.com/77425377/128518068-b385a245-f095-4a5e-adcc-4ddfd34cf11e.png)
+![Ekran Görüntüsü (133)](https://user-images.githubusercontent.com/77425377/128518072-43aa76b4-0d11-4661-b92d-0d93c5751676.png)
+![Ekran Görüntüsü (134)](https://user-images.githubusercontent.com/77425377/128518079-e69e135b-7216-48b0-be83-0d3b54383490.png)
+![Ekran Görüntüsü (135)](https://user-images.githubusercontent.com/77425377/128518081-e2f8d363-1dab-4816-809e-e1edb722b741.png)
+![Ekran Görüntüsü (136)](https://user-images.githubusercontent.com/77425377/128518087-b6031fcc-67fe-4530-b227-b6531bda686d.png)
+![Ekran Görüntüsü (137)](https://user-images.githubusercontent.com/77425377/128518092-4932ebe1-0596-4b06-9c5e-c618b1344239.png)
+![Ekran Görüntüsü (138)](https://user-images.githubusercontent.com/77425377/128518105-17422543-ec3b-496e-ab8b-f42cee1ce49e.png)
+![Ekran Görüntüsü (139)](https://user-images.githubusercontent.com/77425377/128518201-3b8ee9ff-dfee-4d46-8ecc-6969116848ed.png)
+![Ekran Görüntüsü (140)](https://user-images.githubusercontent.com/77425377/128518207-60f0444a-2c25-401f-992d-48df8a0b0508.png)
+![Ekran Görüntüsü (141)](https://user-images.githubusercontent.com/77425377/128518212-0ed7fe9f-8e40-4100-856f-87176f31f79f.png)
+![Ekran Görüntüsü (142)](https://user-images.githubusercontent.com/77425377/128518216-9cb0f68e-60e4-4515-83d2-acbbc93aae1e.png)
+![Ekran Görüntüsü (143)](https://user-images.githubusercontent.com/77425377/128518223-46ca80ec-5188-4a9a-8c43-2ac4386b6324.png)
+![Ekran Görüntüsü (144)](https://user-images.githubusercontent.com/77425377/128518231-2dd5e7e7-1259-4f1a-a2c6-b18a7b8ac1b2.png)
+![Ekran Görüntüsü (145)](https://user-images.githubusercontent.com/77425377/128518235-9f5252e9-8a76-46bd-9d71-a92a08749239.png)
+![Ekran Görüntüsü (146)](https://user-images.githubusercontent.com/77425377/128518243-de17239f-20d9-4df3-86d9-31ad22f8a95a.png)
+![Ekran Görüntüsü (147)](https://user-images.githubusercontent.com/77425377/128518254-01013c4f-7c7d-4df3-8bec-54a2829db189.png)
+![Ekran Görüntüsü (148)](https://user-images.githubusercontent.com/77425377/128518260-fab5dc03-efd9-4f22-9beb-1939e7709188.png)
+![Ekran Görüntüsü (149)](https://user-images.githubusercontent.com/77425377/128518266-614f1f4b-acfc-4876-be46-37f3b710cc40.png)
+![Ekran Görüntüsü (150)](https://user-images.githubusercontent.com/77425377/128518275-7385babb-ea04-44e2-883b-9972853fb1a1.png)
+![Ekran Görüntüsü (152)](https://user-images.githubusercontent.com/77425377/128518342-9514d4ed-d6ba-4d4a-98df-256730148526.png)
+![Ekran Görüntüsü (153)](https://user-images.githubusercontent.com/77425377/128518352-80d15fe1-7f9c-4ae7-ba56-1ea2ed8fa9a3.png)
+![Ekran Görüntüsü (151)](https://user-images.githubusercontent.com/77425377/128518362-40a63489-64fc-469c-9041-63c98f646a83.png)
+ADMİN ------------------------
+![Ekran Görüntüsü (155)](https://user-images.githubusercontent.com/77425377/128518506-cb5131f2-da0e-40ff-a4ab-471876d80bed.png)
+![Ekran Görüntüsü (156)](https://user-images.githubusercontent.com/77425377/128518520-713dd2f9-f11e-4b7e-aabb-74e4b5392db7.png)
+![Ekran Görüntüsü (157)](https://user-images.githubusercontent.com/77425377/128518531-2fd4d44f-2fac-43eb-9951-914a1618ea5c.png)
+![Ekran Görüntüsü (158)](https://user-images.githubusercontent.com/77425377/128518541-dc7910b0-5d1d-4264-a9a1-aa4f3317062f.png)
+![Ekran Görüntüsü (159)](https://user-images.githubusercontent.com/77425377/128518549-beda42b4-d449-48b5-8419-49b2ab87c54a.png)
+![Ekran Görüntüsü (162)](https://user-images.githubusercontent.com/77425377/128518558-63ce87da-f695-4a5b-b81f-b74451230e1b.png)
+![Ekran Görüntüsü (163)](https://user-images.githubusercontent.com/77425377/128518561-11e6c38a-ffcc-40a3-85b7-9f7d853aa9d1.png)
+![Ekran Görüntüsü (164)](https://user-images.githubusercontent.com/77425377/128518564-ed53a52e-cda3-4524-839a-2ebb0f61e628.png)
+![Ekran Görüntüsü (165)](https://user-images.githubusercontent.com/77425377/128518568-689dd0a2-aedc-4b2a-b849-25b9393ef72e.png)
+![Ekran Görüntüsü (166)](https://user-images.githubusercontent.com/77425377/128518576-f1dfa373-4587-4b30-a836-3ff14db8d57e.png)
+![Ekran Görüntüsü (167)](https://user-images.githubusercontent.com/77425377/128518581-799ad817-86c5-4c29-ae3d-2f465d5ba65c.png)
+![Ekran Görüntüsü (168)](https://user-images.githubusercontent.com/77425377/128518585-35a8fe21-dc10-4b1e-bedb-40c73cf62990.png)
+![Ekran Görüntüsü (169)](https://user-images.githubusercontent.com/77425377/128518587-3661547e-1a65-4f56-bca0-e1981134c3c8.png)
+![Ekran Görüntüsü (170)](https://user-images.githubusercontent.com/77425377/128518591-007c4b0a-6d31-442d-8d8e-a1363dfd5743.png)
+![Ekran Görüntüsü (171)](https://user-images.githubusercontent.com/77425377/128518596-11b2f3c4-71d2-4dcd-9b9a-0d26dfae3593.png)
+![Ekran Görüntüsü (172)](https://user-images.githubusercontent.com/77425377/128518599-705db547-2777-4864-a42e-02bbc83e321a.png)
+![Ekran Görüntüsü (173)](https://user-images.githubusercontent.com/77425377/128518606-e9b9a964-46ee-473d-bb61-a72efc7234f1.png)
+![Ekran Görüntüsü (174)](https://user-images.githubusercontent.com/77425377/128518608-b2695018-cb01-41c8-a7bb-c94de6bbc4e0.png)
+![Ekran Görüntüsü (175)](https://user-images.githubusercontent.com/77425377/128518612-2951b596-0436-4454-986e-c95c16cb7a70.png)
+![Ekran Görüntüsü (176)](https://user-images.githubusercontent.com/77425377/128518614-94e66b60-a87c-47e8-887b-acc12f8b74c0.png)
+![Ekran Görüntüsü (177)](https://user-images.githubusercontent.com/77425377/128518621-4ca3cdc0-1034-460e-879e-10647d1d0e7a.png)
