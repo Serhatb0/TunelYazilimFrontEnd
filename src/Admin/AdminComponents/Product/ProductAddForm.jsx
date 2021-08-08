@@ -42,8 +42,10 @@ export const ProductAddForm = ({addOpen,setAddOpen}) => {
               initialValues={initialValues}
               validationSchema={validationSchema}
               onSubmit={(values) => {
-                  productService.add(values)
-                window.location.reload();
+                productService.add(values)
+                setTimeout(() => {
+                  window.location.reload();
+                }, 1000);
               }}
             >
               {({ handleSubmit }) => (
