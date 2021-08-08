@@ -6,8 +6,8 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Dashboard></Dashboard> */}
-    <AdminDashboard></AdminDashboard>
+      <Dashboard></Dashboard>
+    {/* <AdminDashboard></AdminDashboard> */}
      
     </div>
   );
