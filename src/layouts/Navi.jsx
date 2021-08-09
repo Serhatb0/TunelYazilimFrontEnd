@@ -32,12 +32,12 @@ function Navi() {
                 </p>
               </div>
               </div>
-              <div className="  justify-content-end  align-items-end">
+              {/* <div className="  justify-content-end  align-items-end">
               <Button className="response" circular color='facebook' icon='facebook' />
     <Button className="response" circular color='twitter' icon='twitter' />
     <Button className="response" circular color='linkedin' icon='linkedin' />
     <Button className="response" circular color='google plus' icon='google plus' />
-              </div>
+              </div> */}
             
           </div>
         </nav>
