@@ -85,4 +85,10 @@ h3 {
 .homepagecarousel .control-dots{
     margin: 0em 0em 0em 0em;
 }
+/* 
+@media (max-width:500){
+    .homeResponse{
+        margin: 0em 0em 0em 0em !important;
+    }
+} */
 

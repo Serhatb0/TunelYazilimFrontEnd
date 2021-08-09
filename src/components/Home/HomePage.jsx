@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { HomePageForm } from "./HomePageForm";
 import "./HomePage.css";
 import education1 from "../../img/1.jpg";
@@ -147,7 +147,8 @@ function HomePage() {
           </div>
         </div>
         <div className="container">
-          <h1 style={{ margin: "0em 0em 1em 12em" }} className="text-white">
+          <h1 className="d-flex  flex-column text-light
+            justify-content-center text-white align-items-center" >
             Online Sipariş
           </h1>
           <div className="row">

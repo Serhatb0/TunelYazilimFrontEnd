@@ -8,11 +8,19 @@
     height: 50vh;
 }
 
-@media (max-width:500px){
+@media (max-width:1024px){
     .response{
-        float: left;
+        margin:0% 0% 0% 0% !important
+
     }
 }
+
+/* @media (max-width:1024px){
+    .response{
+        margin:0% 0% 0% 30% !important
+
+    }
+} */
 
 .carousel-wrapper,
 .carousel,

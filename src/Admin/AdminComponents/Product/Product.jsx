@@ -58,7 +58,9 @@ function Product() {
               validationSchema={validationSchema}
               onSubmit={(values) => {
                 productService.update(id, values);
-                window.location.reload();
+                setTimeout(() => {
+                  window.location.reload();
+                }, 1000);
               }}
             >
               {({ handleSubmit }) => (

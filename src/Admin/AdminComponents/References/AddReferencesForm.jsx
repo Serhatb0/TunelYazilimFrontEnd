@@ -42,7 +42,9 @@ export const AddReferencesForm = ({ setAddOpen, addOpen }) => {
             validationSchema={validationSchema}
             onSubmit={(values) => {
               referencesService.add(values);
-              window.location.reload();
+              setTimeout(() => {
+                window.location.reload();
+              }, 1000);
             }}
           >
             {({ handleSubmit }) => (

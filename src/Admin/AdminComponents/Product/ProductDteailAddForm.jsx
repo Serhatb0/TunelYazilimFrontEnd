@@ -58,7 +58,9 @@ export const ProductDetailAddForm = ({ addOpen, setAddOpen }) => {
             validationSchema={validationSchema}
             onSubmit={(values) => {
              siteFeaturesService.add(proId.value,values);
+             setTimeout(() => {
               window.location.reload();
+            }, 1000);
 
             }}
           >

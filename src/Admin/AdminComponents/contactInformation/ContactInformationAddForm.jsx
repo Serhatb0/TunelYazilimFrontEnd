@@ -1,4 +1,4 @@
-import { Button, Form, Modal, Pagination, Table } from "semantic-ui-react";
+import { Button, Form, Modal } from "semantic-ui-react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import BiricikTextInput from "../../../utilities/customFormControls/BiricikTextInput";

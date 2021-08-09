@@ -45,7 +45,9 @@ const videoService = new VideoService();
             validationSchema={validationSchema}
             onSubmit={(values) => {
                 videoService.add(values)
-                window.location.reload();
+                setTimeout(() => {
+                  window.location.reload();
+                }, 1000);
             }}
           >
             {({ handleSubmit }) => (

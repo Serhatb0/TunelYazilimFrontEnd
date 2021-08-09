@@ -36,7 +36,7 @@ function References() {
         <div className="row " >
 
           {references.map((ref)=>(
-                 <div key={ref.id} className="col p-0 " >
+                 <div key={ref.id} className="col-4  "  style={{margin:"0em 0em 1em 0em"}}>
                    <div className="latest-item">
                      <button
                      

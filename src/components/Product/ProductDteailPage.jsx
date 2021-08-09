@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button, Card, Image, Table } from "semantic-ui-react";
@@ -64,7 +65,7 @@ function ProductDteailPage() {
             </Card.Group>
           </div>
           <div className="col-sm-8 ">
-            <Table unstackable celled>
+            <Table stackable celled>
               <Table.Header>
                 <Table.Row>
                   <Table.HeaderCell>Teknik Özellikleri</Table.HeaderCell>

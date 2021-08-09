@@ -67,7 +67,9 @@ function References() {
               validationSchema={validationSchema}
               onSubmit={(values) => {
                 referencesService.update(id, values);
-                window.location.reload();
+                setTimeout(() => {
+                  window.location.reload();
+                }, 1000);
               }}
             >
               {({ handleSubmit }) => (

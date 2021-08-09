@@ -9,7 +9,6 @@ function ContactView() {
   const [contact, setContact] = useState([]);
   const [contactId, setcontactId] = useState();
   const contactFormService = new ContactFormService();
-  console.log(contactId);
   useEffect(() => {
     contactFormService
       .getContactForm()
@@ -47,7 +46,7 @@ function ContactView() {
             </Table.Header>
 
             <Table.Body>
-              {contact.map((con) => (
+              {contact.map((con,ind) => (
                 <Table.Row key={con.id}>
                   <Table.Cell>{con.firstName}</Table.Cell>
                   <Table.Cell>{con.phone}</Table.Cell>

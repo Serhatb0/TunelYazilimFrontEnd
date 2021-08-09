@@ -68,7 +68,9 @@ function ProductDteail() {
               validationSchema={validationSchema}
               onSubmit={(values) => {
                 siteFeaturesService.update(id,values)
-                window.location.reload();
+                setTimeout(() => {
+                  window.location.reload();
+                }, 1000);
               }}
             >
               {({ handleSubmit }) => (

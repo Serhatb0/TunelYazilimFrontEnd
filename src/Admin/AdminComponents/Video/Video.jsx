@@ -63,7 +63,9 @@ function Video() {
                 validationSchema={validationSchema}
                 onSubmit={(values) => {
                     videoService.update(id,values)
-                    window.location.reload();
+                    setTimeout(() => {
+                      window.location.reload();
+                    }, 1000);
                 }}
               >
                 {({ handleSubmit }) => (

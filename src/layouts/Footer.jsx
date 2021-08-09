@@ -14,18 +14,17 @@ function Footer() {
       <section id="contact" className="generic dark-bg  ">
         <div className="container">
           <div className="row">
-            <div className="col">
+            <div className="col-7 col-sm-7">
               <h2 className="text-white">Hakkımızda</h2>
               {about.map((ab) => (
                 <p key={ab.id} className="text-white">{ab.aboutDescription}</p>
               ))}
             </div>
-            <div className="col"></div>
-            <div className="col">
+            <div className="col col-sm-5">
               <table className="table border-0 d-flex h-100 flex-column justify-content-center">
                 <tbody>
-                  <tr>
-                    <td colspan="7" className="align-middle">
+                  <tr >
+                    <td colspan="6" className="align-middle">
                       <span className="text-light">
                         Karasoku Mahallesi 28026 Sokak Feyzullah Cemali İş Hanı
                         No:14/A Kat:2 No:208 01010 - Seyhan / ADANA
@@ -39,7 +38,7 @@ function Footer() {
                     </th>
                   </tr>
                   <tr>
-                    <td colspan="7" className="align-middle">
+                    <td colspan="6" className="align-middle">
                       <span className="text-light">0555-455-4555</span>
                     </td>
                     <th scope="row" className="text-danger lead text-center">
@@ -49,42 +48,30 @@ function Footer() {
                       ></i>
                     </th>
                   </tr>
-                  <tr>
-                    <td className="align-middle">
-                      <span className="text-light">
+                  <tr >
+                    <td colspan="6"  s className="align-middle">
+                      <span style={{margin:"0em 1em 0em 0em"}}  className="text-light">
                         <i className="bi bi-facebook"></i>
                       </span>
-                    </td>
-                    <td className="align-middle">
-                      <span className="text-light">
+                  
+                      <span style={{margin:"0em 1em 0em 0em"}}  className="text-light">
                         <i className="bi bi-twitter"></i>
                       </span>
-                    </td>
-                    <td className="align-middle">
-                      <span className="text-light">
+                      <span style={{margin:"0em 1em 0em 0em"}}  className="text-light">
                         <i className="bi bi-youtube"></i>
                       </span>
-                    </td>
-                    <td className="align-middle">
-                      <span className="text-light">
+                      <span style={{margin:"0em 1em 0em 0em"}}  className="text-light">
                         <i className="bi bi-linkedin"></i>
                       </span>
-                    </td>
-                    <td className="align-middle">
-                      <span className="text-light">
+                      <span style={{margin:"0em 1em 0em 0em"}}  className="text-light">
                         <i className="bi bi-google"></i>
                       </span>
-                    </td>
-                    <td className="align-middle">
-                      <span className="text-light">
+                      <span style={{margin:"0em 1em 0em 0em"}}  className="text-light">
                         <i className="bi bi-instagram"></i>
                       </span>
-                    </td>
-                    <td className="align-middle">
-                      <span className="text-light">
+                      <span style={{margin:"0em 1em 0em 0em"}}  className="text-light">
                         <i className="bi bi-github"></i>
-                      </span>
-                    </td>
+                      </span>  </td>
                     <th scope="row" className="text-danger lead text-center">
                       <i
                         style={{ fontSize: "2rem" }}
