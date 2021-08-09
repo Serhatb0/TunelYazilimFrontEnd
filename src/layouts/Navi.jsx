@@ -8,19 +8,19 @@ import { NavLink } from "react-router-dom";
 function Navi() {
   return (
     <div>
-      <div class="bs-example">
-        <nav class="navbar navbar-expand navbar-light bg-dark">
+      <div className="bs-example" >
+        <nav className="navbar navbar-expand navbar-light bg-dark">
           <div className="container">
             <div
-              className="d-flex h-100 flex-column text-light
+              className="d-flex  flex-column text-light
             justify-content-center"
             >
-              <div class="collapse navbar-collapse" id="navbarCollapse">
-                <i class="bi bi-whatsapp"></i>{" "}
+              <div className="collapse navbar-collapse" id="navbarCollapse">
+                <i className="bi bi-whatsapp"></i>{" "}
                 <p style={{ margin: "0em 0em 0em 1em" }}>888 555 2568</p>
                 <i
                   style={{ margin: "0em 0em 0em 1em" }}
-                  class="bi bi-envelope"
+                  className="bi bi-envelope"
                 ></i>{" "}
                 <p style={{ margin: "0em 0em 0em 1em" }}>
                   {" "}

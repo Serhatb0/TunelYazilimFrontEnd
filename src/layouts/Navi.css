@@ -20,3 +20,10 @@
 .carousel > .slider-wrapper > .slider {
   height: 30em;
 }
+
+
+@media (max-width:1023px){
+    .bs-example{
+       width: 130%;
+    }
+}
