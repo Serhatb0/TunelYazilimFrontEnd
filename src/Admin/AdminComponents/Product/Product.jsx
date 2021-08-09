@@ -19,11 +19,15 @@ function Product() {
   }, []);
 
   useEffect(() => {
-    productService
+    if(id === undefined){
+
+    }else{
+      productService
       .getProductById(id)
       .then((result) => setProductId(result.data.data));
+    }
+  
   }, [id]);
-  console.log(id);
   const ProductUpdateForm = () => {
     const validationSchema = Yup.object({
       productName: Yup.string().required("Zorunlu Alan"),
@@ -122,7 +126,7 @@ function Product() {
               </div>
             </div>
           </div>
-          <Table unstackable celled>
+          <Table stackable celled>
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Ürun Adı</Table.HeaderCell>

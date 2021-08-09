@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { Nav } from "react-bootstrap";
-import { NavLink, Route } from "react-router-dom";
+import { NavLink, Route, Switch } from "react-router-dom";
 import ProductDteail from "../AdminComponents/Product/ProductDteail";
 import ContactView from "../AdminComponents/Contact/ContactView";
 import Product from "../AdminComponents/Product/Product";
@@ -12,6 +12,7 @@ import "./css/sb-admin-2.min.css";
 import News from "../AdminComponents/News/News";
 import ContactInformation from "../AdminComponents/contactInformation/ContactInformation";
 import OnlineOrder from "../AdminComponents/OnlineOrder/OnlineOrder";
+import { Button } from "semantic-ui-react";
 
 export default function EmployeeNavi() {
   return (
@@ -29,7 +30,7 @@ export default function EmployeeNavi() {
               <i className="fas fa-laugh-wink" />
             </div>
             <div className="sidebar-brand-text mx-3">
-              Çalışanlar <sup></sup>
+              Admin <sup></sup>
             </div>
           </a>
 
@@ -67,7 +68,7 @@ export default function EmployeeNavi() {
                 <Nav.Link
                   className="collapse-item  "
                   as={NavLink}
-                  to="/ContactView"
+                  to="/admin/ContactView"
                   style={{ width: "13em" }}
                 >
                   İletişim Bilgilerini Göster
@@ -103,7 +104,7 @@ export default function EmployeeNavi() {
                     className="collapse-item  "
                     as={NavLink}
                     style={{ width: "13em" }}
-                    to="/references"
+                    to="/admin/references"
                   >
                     Referanslar
                   </Nav.Link>
@@ -135,7 +136,7 @@ export default function EmployeeNavi() {
                     className="collapse-item  "
                     as={NavLink}
                     style={{ width: "13em" }}
-                    to="/video"
+                    to="/admin/video"
                   >
                     Video
                   </Nav.Link>
@@ -166,7 +167,7 @@ export default function EmployeeNavi() {
                 <Nav.Link
                   className="collapse-item  "
                   as={NavLink}
-                  to="/product"
+                  to="/admin/product"
                   style={{ width: "13em" }}
                 >
                   Ürunler
@@ -174,7 +175,7 @@ export default function EmployeeNavi() {
                 <Nav.Link
                   className="collapse-item  "
                   as={NavLink}
-                  to="/productAdmindteail"
+                  to="/admin/productAdmindteail"
                   style={{ width: "13em" }}
                 >
                   Ürun Detayı
@@ -207,7 +208,7 @@ export default function EmployeeNavi() {
                     className="collapse-item  "
                     as={NavLink}
                     style={{ width: "13em" }}
-                    to="/news"
+                    to="/admin/news"
                   >
                     Haberler
                   </Nav.Link>
@@ -240,7 +241,7 @@ export default function EmployeeNavi() {
                     className="collapse-item  "
                     as={NavLink}
                     style={{ width: "13em" }}
-                    to="/contactinformation"
+                    to="/admin/contactinformation"
                   >
                     İletişim Bilgileri
                   </Nav.Link>
@@ -273,7 +274,7 @@ export default function EmployeeNavi() {
                     className="collapse-item  "
                     as={NavLink}
                     style={{ width: "13em" }}
-                    to="/order"
+                    to="/admin/order"
                   >
                     Sipariş Bilgileri
                   </Nav.Link>
@@ -580,48 +581,37 @@ export default function EmployeeNavi() {
                     className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                     aria-labelledby="userDropdown"
                   >
-                    <a className="dropdown-item" href="#">
-                      <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />
-                      Profile
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" />
-                      Settings
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400" />
-                      Activity Log
-                    </a>
-                    <div className="dropdown-divider" />
-                    <a
+                   
+                    <Button
                       className="dropdown-item"
-                      href="#"
                       data-toggle="modal"
                       data-target="#logoutModal"
+                      as={NavLink}
+                      to={`/`}
                     >
                       <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" />
-                      Logout
-                    </a>
+                      Çıkış Yap
+                    </Button> 
                   </div>
                 </li>
               </ul>
             </nav>
             <div className="tab-content col-12" id="nav-tabContent">
-              <Route exact path="/contactView" component={ContactView} />
-              <Route exact path="/references" component={References} />
-              <Route exact path="/video" component={Video} />
-              <Route exact path="/product" component={Product} />
-              <Route exact path="/news" component={News} />
-              <Route exact path="/contactinformation" component={ContactInformation} />
-              <Route exact path="/order" component={OnlineOrder} />
-
+              <Switch>
+              <Route exact path="/admin/contactView" component={ContactView} />
+              <Route exact path="/admin/references" component={References} />
+              <Route exact path="/admin/video" component={Video} />
+              <Route exact path="/admin/product" component={Product} />
+              <Route exact path="/admin/news" component={News} />
+              <Route exact path="/admin/contactinformation" component={ContactInformation} />
+              <Route exact path="/admin/order" component={OnlineOrder} />
 
 
               <Route
                 exact
-                path="/productAdmindteail"
+                path="/admin/productAdmindteail"
                 component={ProductDteail}
-              />
+              /></Switch>
             </div>
           </div>
         </div>

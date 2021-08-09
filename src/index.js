@@ -6,17 +6,22 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import 'bootstrap-select/dist/js/bootstrap-select.min.js';
-import 'bootstrap-select/dist/css/bootstrap-select.min.css';
-import 'jquery/dist/jquery.slim.min.js';
-import 'jquery/dist/jquery.min.js';
+import "bootstrap-select/dist/js/bootstrap-select.min.js";
+import "bootstrap-select/dist/css/bootstrap-select.min.css";
+import "jquery/dist/jquery.slim.min.js";
+import "jquery/dist/jquery.min.js";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "semantic-ui-css/semantic.min.css";
 import { BrowserRouter } from "react-router-dom";
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 ReactDOM.render(
+  
   <BrowserRouter>
-    {" "}
+    <Provider store={store}>
+      {" "}
       <App />
+    </Provider>
   </BrowserRouter>,
   document.getElementById("root")
 );

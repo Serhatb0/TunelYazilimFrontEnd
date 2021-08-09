@@ -1,5 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
+import AdminLoginPage from "../Admin/AdminComponents/AdminLogin/AdminLoginPage";
 
 import AboutUsPage from "../components/AboutUs/AboutUsPage";
 import ContactPage from "../components/Contact/ContactPage";
@@ -31,6 +32,8 @@ function Dashboard() {
         <Route exact path="/video" component={VideoPage} />
         <Route exact path="/contact" component={ContactPage} />
         <Route path="/video/:id" component={VideoPageDteail} />
+        <Route path="/admin" component={AdminLoginPage } />
+
         <Footer></Footer>
       </div>)
 }

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { Modal, Pagination, Table } from "semantic-ui-react";
@@ -7,6 +8,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import BiricikTextInput from "../../../utilities/customFormControls/BiricikTextInput";
 import { AddReferencesForm } from "./AddReferencesForm";
+import AddReferencesImage from "./AddReferencesImage";
 
 function References() {
   const [references, setReferences] = useState([]);
@@ -14,6 +16,7 @@ function References() {
   const [refrencesId, setRefrencesId] = useState([]);
   const [open, setOpen] = useState(false);
   const [addOpen, setAddOpen] = useState(false);
+  const [addImageOpen, setAddImageOpen] = useState(false)
 
   const referencesService = new ReferencesService();
 
@@ -187,6 +190,18 @@ function References() {
                         
                       </i>
                     </a>
+                    <a
+                      onClick={() => setId(ref.id)}
+                      href="#"
+
+                    >
+                      <i
+                        onClick={() => setAddImageOpen(true)}
+                        className="bi bi-card-image"
+                      >
+                     
+                      </i>
+                    </a>
                   </Table.Cell>
                 </Table.Row>
               ))}
@@ -207,6 +222,7 @@ function References() {
       {/* Edit Modal HTML */}
 
       <ReferencesUpdateForm></ReferencesUpdateForm>
+      <AddReferencesImage setAddImageOpen={setAddImageOpen} addImageOpen={addImageOpen}></AddReferencesImage>
       {/* Delete Modal HTML */}
       <div id="deleteEmployeeModal" className="modal fade">
         <div className="modal-dialog">

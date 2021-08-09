@@ -1,4 +1,5 @@
-import http from "../http-common";
+import http from "./httpCommon";
+
 
 class UploadFilesService {
   upload(file, onUploadProgress) {
@@ -6,7 +7,7 @@ class UploadFilesService {
 
     formData.append("file", file);
 
-    return http.post("/cloudinarys/upload", formData, {
+    return http.post("/cloudinarys/file/upload", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -20,3 +21,6 @@ class UploadFilesService {
 }
 
 export default new UploadFilesService();
+
+
+
