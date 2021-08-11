@@ -22,12 +22,16 @@ function Video() {
     }, []);
   
     useEffect(() => {
+      if(id === undefined){
+
+      }else{
         videoService
         .getvideoById(id)
         .then((result) => setVideoId(result.data.data));
+      }
+        
     }, [id]);
   
-    console.log(videoId);
     const VideoUpateForm = () => {
       const validationSchema = Yup.object({
         videoName: Yup.string().required("Zorunlu Alan"),
@@ -129,7 +133,7 @@ function Video() {
                 </div>
               </div>
             </div>
-            <Table unstackable celled>
+            <Table stackable celled>
               <Table.Header>
                 <Table.Row>
                   <Table.HeaderCell>Video Adı</Table.HeaderCell>
@@ -182,12 +186,7 @@ function Video() {
               </Table.Body>
             </Table>
   
-            <div className="clearfix">
-              <div className="hint-text">
-                Showing <b>5</b> out of <b>25</b> entries
-              </div>
-              <Pagination></Pagination>
-            </div>
+           
           </div>
         </div>
         {/* Edit Modal HTML */}
@@ -202,7 +201,7 @@ function Video() {
             <div className="modal-content">
               <form>
                 <div className="modal-header">
-                  <h4 className="modal-title">Delete Employee</h4>
+                  <h4 className="modal-title">Delete</h4>
                   <button
                     type="button"
                     className="close"

@@ -5,14 +5,19 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./NewsPageDteail.css";
 import NewsService from "../../services/newsService";
+import UploadFilesService from "../../services/uploadFilesService";
 
 function NewsPageDteail() {
   let { id } = useParams();
   const [news, setNews] = useState([]);
+  const [photo, setphoto] = useState([])
+
   useEffect(() => {
     const newsService = new NewsService();
-
+   
     newsService.getNewsId(id).then((result) => setNews(result.data.data));
+
+    UploadFilesService.getFilesNewsId(id).then(result => setphoto(result.data.data))
   }, []);
   return (
   
@@ -38,15 +43,16 @@ function NewsPageDteail() {
             <p style={{ margin: "2em 0em 0em 0em" }}>
              {news.newsDescription}
             </p>
-            {/* <ul>
-              <li>SSL Güvenlik sertifikasına sahip olmalı</li>
-              <li>SSL Güvenlik sertifikasına sahip olmalı</li>
-              <li>SSL Güvenlik sertifikasına sahip olmalı</li>
-              <li>SSL Güvenlik sertifikasına sahip olmalı</li>
-            </ul> */}
+            
           </div>
           <div className="col">
-            <img src="https://www.tunelyazilim.com/site_document/sayfa_img/BVDV10Y2B_resim_2_6_2019_23_s.jpg"></img>
+          {photo.map((pho)=>(
+                               <img
+                               style={{width:"30em", height:"30em"}}
+                              src={pho.photoUrl}
+                              alt=""
+                            />
+                            ))}
           </div>
         </div>
       </div>
@@ -67,6 +73,7 @@ function NewsPageDteail() {
                       <fieldset>
                         <div class="row">
                           <div class="col-sm-3 col-lg-2 hidden-xs">
+                            
                             <img
                               class="img-responsive"
                               src="http://res.cloudinary.com/dmeviw9q7/image/upload/v1623523376/nkorft8y9lgudvrewdlp.jpg"

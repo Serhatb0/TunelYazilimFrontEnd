@@ -129,7 +129,7 @@ function ContactInformation() {
             <div className="row">
               <div className="col-sm-6">
                 <h2>
-                  Haber <b>Bilgileri</b>
+                  İletişim <b>Bilgileri</b>
                 </h2>
               </div>
               <div className="col-sm-6">
@@ -145,7 +145,7 @@ function ContactInformation() {
               </div>
             </div>
           </div>
-          <Table unstackable celled>
+          <Table stackable celled>
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Adres</Table.HeaderCell>
@@ -208,12 +208,7 @@ function ContactInformation() {
             </Table.Body>
           </Table>
 
-          <div className="clearfix">
-            <div className="hint-text">
-              Showing <b>5</b> out of <b>25</b> entries
-            </div>
-            <Pagination></Pagination>
-          </div>
+         
         </div>
       </div>
       {/* Edit Modal HTML */}
@@ -227,7 +222,7 @@ function ContactInformation() {
           <div className="modal-content">
             <form>
               <div className="modal-header">
-                <h4 className="modal-title">Delete Employee</h4>
+                <h4 className="modal-title">Delete</h4>
                 <button
                   type="button"
                   className="close"

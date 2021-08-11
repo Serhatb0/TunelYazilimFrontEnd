@@ -68,12 +68,7 @@ function OnlineOrder() {
                 ))}
               </Table.Body>
             </Table>
-            <div className="clearfix">
-              <div className="hint-text">
-                Showing <b>5</b> out of <b>25</b> entries
-              </div>
-              <Pagination></Pagination>
-            </div>
+           
           </div>
         </div>
   

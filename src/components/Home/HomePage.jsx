@@ -1,13 +1,20 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
-import React from "react";
+import React, { useEffect,useState } from "react";
 import { HomePageForm } from "./HomePageForm";
 import "./HomePage.css";
 import education1 from "../../img/1.jpg";
 import { Carousel } from "react-responsive-carousel";
 import education2 from "../../img/2.jpg";
+import CustomerfeedbackService from "../../services/customerfeedbackService";
+
 function HomePage() {
- 
+  const [customerFeedback, setCustomerFeedback] = useState([])
+
+ useEffect(() => {
+  CustomerfeedbackService.getCustomerFeedback().then(result =>setCustomerFeedback(result.data.data) )
+
+ }, [])
   return (
     <div>
         <Carousel showThumbs={false} className="carousel-wrapper">
@@ -188,20 +195,15 @@ function HomePage() {
           <div className="row ">
             <div className="col">
               <Carousel  infiniteLoop={true} showThumbs={false} className="carousel-wrapper pt-3 homepagecarousel2">
-                <div style={{ height: "100px"}}>
-                  <p style={{ height: "100px"}}  >Web Tasarım
-                  hizmetinizden Cok Memnun Kaldık Çok teşekkür ederiz
-                  Tünel Yazılım..
+                {customerFeedback.map((customer)=>(
+                          <div key={customer.id} style={{ height: "100px"}}>
+                  <p style={{ height: "100px"}}  >{customer.customerComment}
                   </p>
-                  <b>Ahmet.k</b>
+                  <b>{customer.cutomerName}</b>
                 </div>
-                <div style={{ height: "100px"}}>
-                  <p style={{ height: "100px"}}  >Web Tasarım
-                  hizmetinizden Cok Memnun Kaldık Çok teşekkür ederiz
-                  Tünel Yazılım..
-                  </p>
-                  <b>Ahmet.k</b>
-                </div>
+                ))}
+        
+              
                 
               </Carousel>
             </div>

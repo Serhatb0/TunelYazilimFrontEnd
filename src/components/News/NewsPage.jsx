@@ -8,7 +8,7 @@ function NewsPage() {
   useEffect(() => {
     const newsService = new NewsService();
 
-    newsService.getNews().then((result) => setNews(result.data.data));
+    newsService.getNewsAll().then((result) => setNews(result.data.data));
   }, []);
     return (
         <div>
@@ -33,11 +33,14 @@ function NewsPage() {
                <Card.Group>
                  <Card>
                    <Card.Content>
-                     <Image
+                     {news?.photos.map((pho)=>(
+                        <Image
                        floated="right"
                        size="large"
-                       src="https://www.startupnedir.com/wp-content/uploads/2017/09/e-ticaret-780x405.jpg"
+                       src={pho.photoUrl}
                      />
+                     ))}
+                    
                      <Card.Header>{news.newsName}</Card.Header>
                      
                    </Card.Content>

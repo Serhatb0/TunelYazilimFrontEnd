@@ -11,6 +11,9 @@ import { AddReferencesForm } from "./AddReferencesForm";
 import AddReferencesImage from "./AddReferencesImage";
 
 function References() {
+  const [pageSize] = useState(10);
+  const [activePage, setActivePage] = useState(1);
+  const [total, setTotal] = useState()
   const [references, setReferences] = useState([]);
   const [id, setId] = useState();
   const [refrencesId, setRefrencesId] = useState([]);
@@ -21,17 +24,32 @@ function References() {
   const referencesService = new ReferencesService();
 
   useEffect(() => {
-    referencesService
-      .getReferences()
-      .then((result) => setReferences(result.data.data));
-  }, []);
+    if(activePage === 0){
 
+    }else{
+       referencesService
+      .getReferences(activePage,pageSize)
+      .then((result) => setReferences(result.data.data));
+
+      referencesService
+      .getReferences(activePage,pageSize)
+      .then((result) => setTotal(result.data.message));
+    }
+   
+  }, [activePage]);
   useEffect(() => {
-    referencesService
+    if(id === undefined){
+
+    }else{
+      referencesService
       .getReferencesById(id)
       .then((result) => setRefrencesId(result.data.data));
+    }
+  
   }, [id]);
-
+  const handleSelectedPage = (e, { activePage }) => {
+    setActivePage(activePage);
+  };
 
   const ReferencesUpdateForm = () => {
     const validationSchema = Yup.object({
@@ -141,7 +159,7 @@ function References() {
               </div>
             </div>
           </div>
-          <Table unstackable celled>
+          <Table stackable celled>
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Referans Adı</Table.HeaderCell>
@@ -209,10 +227,18 @@ function References() {
           </Table>
 
           <div className="clearfix">
-            <div className="hint-text">
-              Showing <b>5</b> out of <b>25</b> entries
-            </div>
-            <Pagination></Pagination>
+          <Pagination
+    boundaryRange={0}
+    activePage={activePage}
+    ellipsisItem={null}
+    firstItem={null}
+    lastItem={null}
+    onPageChange={handleSelectedPage}
+    siblingRange={1}
+    totalPages={Math.ceil(
+      parseInt(total) / pageSize
+    )}
+  />
           </div>
         </div>
       </div>
@@ -222,14 +248,14 @@ function References() {
       {/* Edit Modal HTML */}
 
       <ReferencesUpdateForm></ReferencesUpdateForm>
-      <AddReferencesImage setAddImageOpen={setAddImageOpen} addImageOpen={addImageOpen}></AddReferencesImage>
+      <AddReferencesImage id={id} setAddImageOpen={setAddImageOpen} addImageOpen={addImageOpen}></AddReferencesImage>
       {/* Delete Modal HTML */}
       <div id="deleteEmployeeModal" className="modal fade">
         <div className="modal-dialog">
           <div className="modal-content">
             <form>
               <div className="modal-header">
-                <h4 className="modal-title">Delete Employee</h4>
+                <h4 className="modal-title">Delete</h4>
                 <button
                   type="button"
                   className="close"

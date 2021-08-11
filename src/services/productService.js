@@ -1,12 +1,13 @@
 import http from "./httpCommon";
 
 export default class ProductService {
-  getProduct(id) {
-    if (id) {
-      return http.get(`/product/getAllById?id=${id}`);
-    } else {
-      return http.get("/product/getAll");
-    }
+  getProductAll() {
+  
+    return http.get(`/product/getAll`);
+}
+  getProduct(pageNo,pageSize) {
+  
+      return http.get(`/product/findByactiveTrue?pageNo=${pageNo}&pageSize=${pageSize}`);
   }
   getProductById(id) {
     return http.get(`/product/getAllById?id=${id}`);

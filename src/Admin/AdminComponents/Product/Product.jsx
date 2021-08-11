@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { Button, Form, Modal, Pagination, Table } from "semantic-ui-react";
@@ -7,17 +8,30 @@ import BiricikTextInput from "../../../utilities/customFormControls/BiricikTextI
 import ProductService from "../../../services/productService";
 import BiricikTextAreaInput from "../../../utilities/customFormControls/BiricikTextAreaInput";
 import { ProductAddForm } from "./ProductAddForm";
+import ProductAddImage from "./ProductAddImage";
 function Product() {
+  const [pageSize] = useState(10);
+  const [activePage, setActivePage] = useState(1);
+  const [total, setTotal] = useState()
   const [product, setProduct] = useState([]);
   const [productId, setProductId] = useState([]);
   const [id, setId] = useState();
+  const [addImageOpen, setAddImageOpen] = useState(false)
   const [open, setOpen] = useState(false);
   const [addOpen, setAddOpen] = useState(false);
   const productService = new ProductService();
   useEffect(() => {
-    productService.getProduct().then((result) => setProduct(result.data.data));
-  }, []);
+    if(activePage ===0){
 
+    }else{
+       productService.getProduct(activePage,pageSize).then((result) => setProduct(result.data.data))
+
+    productService.getProduct(activePage,pageSize).then((result) => setTotal(result.data.message))
+    }
+   
+
+   
+  }, [activePage]);
   useEffect(() => {
     if(id === undefined){
 
@@ -28,6 +42,9 @@ function Product() {
     }
   
   }, [id]);
+  const handleSelectedPage = (e, { activePage }) => {
+    setActivePage(activePage);
+  };
   const ProductUpdateForm = () => {
     const validationSchema = Yup.object({
       productName: Yup.string().required("Zorunlu Alan"),
@@ -172,6 +189,18 @@ function Product() {
                         
                       </i>
                     </a>
+                    <a
+                      onClick={() => setId(pro.id)}
+                      href="#"
+
+                    >
+                      <i
+                        onClick={() => setAddImageOpen(true)}
+                        className="bi bi-card-image"
+                      >
+                     
+                      </i>
+                    </a>
                   </Table.Cell>
                 </Table.Row>
               ))}
@@ -179,16 +208,26 @@ function Product() {
           </Table>
 
           <div className="clearfix">
-            <div className="hint-text">
-              Showing <b>5</b> out of <b>25</b> entries
-            </div>
-            <Pagination></Pagination>
+          <Pagination
+    boundaryRange={0}
+    activePage={activePage}
+    ellipsisItem={null}
+    firstItem={null}
+    lastItem={null}
+    onPageChange={handleSelectedPage}
+    siblingRange={1}
+    totalPages={Math.ceil(
+      parseInt(total) / pageSize
+    )}
+  />
+           
+          
           </div>
         </div>
       </div>
       {/* Edit Modal HTML */}
       <ProductAddForm  addOpen={addOpen} setAddOpen={setAddOpen}></ProductAddForm>
-
+        <ProductAddImage  setAddImageOpen={setAddImageOpen} addImageOpen={addImageOpen} id={id}></ProductAddImage>
       {/* Edit Modal HTML */}
 
       <ProductUpdateForm></ProductUpdateForm>
@@ -198,7 +237,7 @@ function Product() {
           <div className="modal-content">
             <form>
               <div className="modal-header">
-                <h4 className="modal-title">Delete Employee</h4>
+                <h4 className="modal-title">Delete</h4>
                 <button
                   type="button"
                   className="close"

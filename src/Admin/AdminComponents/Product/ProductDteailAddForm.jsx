@@ -17,7 +17,7 @@ export const ProductDetailAddForm = ({ addOpen, setAddOpen }) => {
     setproId({  value });
   };
   useEffect(() => {
-    productService.getProduct().then((result) => setProduct(result.data.data));
+    productService.getProductAll().then((result) => setProduct(result.data.data));
   }, []);
   const validationSchema = Yup.object({
     technicalSpecifications: Yup.string().required("Zorunlu Alan"),
@@ -77,19 +77,7 @@ export const ProductDetailAddForm = ({ addOpen, setAddOpen }) => {
                   };
                 })}
                 />
-                {/* <Dropdown
-                style={{}}
-                  placeholder="State"
-                  search
-                  selection
-                  options={product.map((pro) => {
-                    return {
-                      text: pro.productName,
-                      key: pro.id,
-                      value: pro.id,
-                    };
-                  })}
-                /> */}
+              
 
                 <BiricikTextInput
                   name="technicalSpecifications"

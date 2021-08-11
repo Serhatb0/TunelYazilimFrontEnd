@@ -3,8 +3,11 @@ import http from "./httpCommon";
 
 
 export default class NewsService{
-    getNews(){
-        return http.get("newsname/getAll")
+    getNewsAll(){
+        return http.get(`/newsname/getAll`)
+    }
+    getNews(pageNo,pageSize){
+        return http.get(`/newsname/findByactiveTrue?pageNo=${pageNo}&pageSize=${pageSize}`)
     }
 
     getNewsId(id){

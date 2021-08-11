@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
-import { Button, Pagination, Table } from "semantic-ui-react";
+import { Button,  Table } from "semantic-ui-react";
 import ContactFormService from "../../../services/contactFormService";
 import "./Css/Contact.css";
 
@@ -74,12 +74,7 @@ function ContactView() {
               ))}
             </Table.Body>
           </Table>
-          <div className="clearfix">
-            <div className="hint-text">
-              Showing <b>5</b> out of <b>25</b> entries
-            </div>
-            <Pagination></Pagination>
-          </div>
+          
         </div>
       </div>
 

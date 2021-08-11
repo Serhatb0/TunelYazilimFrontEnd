@@ -1,63 +1,44 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import { Button, Form, Modal, Pagination, Table } from "semantic-ui-react";
+import { Button, Form, Modal,  Table } from "semantic-ui-react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import BiricikTextInput from "../../../utilities/customFormControls/BiricikTextInput";
 import BiricikTextAreaInput from "../../../utilities/customFormControls/BiricikTextAreaInput";
-import NewsService from "../../../services/newsService";
-import { NewsAddForm } from "./NewsAddForm";
-import NewsAddImage from "./NewsAddImage";
-function News() {
-  const [pageSize] = useState(10);
-  const [activePage, setActivePage] = useState(1);
-  const [total, setTotal] = useState();
-  const [news, setNews] = useState([]);
-  const [newsId, setNewsId] = useState([]);
-  const [addImageOpen, setAddImageOpen] = useState(false);
-
+import CustomerfeedbackService from "../../../services/customerfeedbackService";
+import { CustomerFeedbackAddForm } from "./CustomerFeedbackAddForm";
+function CustomerFeedback() {
+    const [customerFeedback, setCustomerFeedback] = useState([]);
+  const [customerFeedbackId, setCustomerFeedbackId] = useState([]);
   const [id, setId] = useState();
   const [open, setOpen] = useState(false);
   const [addOpen, setAddOpen] = useState(false);
-  const newsService = new NewsService();
   useEffect(() => {
-    if(activePage === 0){
-
-    }else{
-        newsService
-      .getNews(activePage, pageSize)
-      .then((result) => setNews(result.data.data));
-
-    newsService
-      .getNews(activePage, pageSize)
-      .then((result) => setTotal(result.data.message));
-    }
-  
-  }, [activePage]);
-
+    CustomerfeedbackService
+      .getCustomerFeedback()
+      .then((result) => setCustomerFeedback(result.data.data));
+  }, []);
 
   useEffect(() => {
-    if(id === undefined){
+      if(id === undefined){
 
-    }else{
-         newsService.getNewsId(id).then((result) => setNewsId(result.data.data));
-    }
- 
+      }else{
+           CustomerfeedbackService
+      .getCustomerFeedbackById(id)
+      .then((result) => setCustomerFeedbackId(result.data.data));
+      }
+   
   }, [id]);
-
-  const handleSelectedPage = (e, { activePage }) => {
-    setActivePage(activePage);
-  };
-  const NewsUpdateForm = () => {
+  const CustomerFeedbackUpdateForm = () => {
     const validationSchema = Yup.object({
-      newsName: Yup.string().required("Zorunlu Alan"),
-      newsDescription: Yup.string().required("Zorunlu Alan"),
+        cutomerName: Yup.string().required("Zorunlu Alan"),
+        customerComment: Yup.string().required("Zorunlu Alan"),
+  
     });
 
     const initialValues = {
-      newsName: newsId.newsName,
-      newsDescription: newsId.newsDescription,
+        cutomerName: customerFeedbackId.cutomerName,
+        customerComment: customerFeedbackId.customerComment,
+    
     };
     return (
       <Modal
@@ -75,30 +56,33 @@ function News() {
         onOpen={() => setOpen(true)}
         open={open}
       >
-        <Modal.Header>Haber Güncelle</Modal.Header>
+        <Modal.Header>Müsteri Yorumları Güncelle</Modal.Header>
         <Modal.Content image>
           <Modal.Description>
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}
               onSubmit={(values) => {
-                newsService.update(id, values);
+                CustomerfeedbackService.update(id,values)
                 window.location.reload();
               }}
             >
               {({ handleSubmit }) => (
                 <Form onSubmit={handleSubmit}>
-                  <label>Haber Adı</label>
+                  <label>Müşteri Adı</label>
+
 
                   <BiricikTextInput
-                    name="newsName"
-                    placeholder="Haber Başlıgı"
+                    name="cutomerName"
+                    placeholder="Müşteri Adı"
                   ></BiricikTextInput>
-                  <label>Haber Açıklaması</label>
+                  <label>Müşteri Yorumu</label>
+
                   <BiricikTextAreaInput
-                    name="newsDescription"
-                    placeholder="Haber Açıklaması"
+                    name="customerComment"
+                    placeholder="Müşteri Yorumu"
                   ></BiricikTextAreaInput>
+                
 
                   <Modal.Actions>
                     <Button color="black" onClick={() => setOpen(false)}>
@@ -129,7 +113,7 @@ function News() {
             <div className="row">
               <div className="col-sm-6">
                 <h2>
-                  Haber <b>Bilgileri</b>
+                  Müşteri <b>Yorumları</b>
                 </h2>
               </div>
               <div className="col-sm-6">
@@ -140,7 +124,7 @@ function News() {
                   onClick={() => setAddOpen(true)}
                 >
                   <i className="material-icons"></i>{" "}
-                  <span>Yeni Haber Ekle</span>
+                  <span>Müşteri Yorumu Ekle</span>
                 </a>
               </div>
             </div>
@@ -148,24 +132,29 @@ function News() {
           <Table stackable celled>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Haber Adı</Table.HeaderCell>
-                <Table.HeaderCell>Haber Açıklamsı</Table.HeaderCell>
+                <Table.HeaderCell>Müşteri Adı</Table.HeaderCell>
+                <Table.HeaderCell>Müşteri Yorumu</Table.HeaderCell>
+
+
 
                 <Table.HeaderCell></Table.HeaderCell>
               </Table.Row>
             </Table.Header>
 
             <Table.Body>
-              {news.map((news) => (
-                <Table.Row key={news.id}>
-                  <Table.Cell>{news.newsName}</Table.Cell>
-                  <Table.Cell>{news.newsDescription}</Table.Cell>
+              {customerFeedback.map((customer) => (
+                <Table.Row key={customer.id}>
+                  <Table.Cell>{customer.cutomerName}</Table.Cell>
+                  <Table.Cell>{customer.customerComment}</Table.Cell>
+
+
+
 
                   <Table.Cell>
                     <a
                       href="#editEmployeeModal"
                       className="edit"
-                      onClick={() => setId(news.id)}
+                      onClick={() => setId(customer.id)}
                       data-toggle="modal"
                     >
                       <i
@@ -178,7 +167,7 @@ function News() {
                       </i>
                     </a>
                     <a
-                      onClick={() => setId(news.id)}
+                      onClick={() => setId(customer.id)}
                       href="#deleteEmployeeModal"
                       className="delete"
                       data-toggle="modal"
@@ -191,43 +180,20 @@ function News() {
                         
                       </i>
                     </a>
-                    <a onClick={() => setId(news.id)} href="#">
-                      <i
-                        onClick={() => setAddImageOpen(true)}
-                        className="bi bi-card-image"
-                      ></i>
-                    </a>
                   </Table.Cell>
                 </Table.Row>
               ))}
             </Table.Body>
           </Table>
 
-          <div className="clearfix">
-          <Pagination
-    boundaryRange={0}
-    activePage={activePage}
-    ellipsisItem={null}
-    firstItem={null}
-    lastItem={null}
-    onPageChange={handleSelectedPage}
-    siblingRange={1}
-    totalPages={Math.ceil(
-      parseInt(total) / pageSize
-    )}/>
-          </div>
+        
         </div>
       </div>
       {/* Edit Modal HTML */}
-      <NewsAddImage
-        setAddImageOpen={setAddImageOpen}
-        addImageOpen={addImageOpen}
-        id={id}
-      ></NewsAddImage>
-      <NewsAddForm addOpen={addOpen} setAddOpen={setAddOpen}></NewsAddForm>
+      <CustomerFeedbackAddForm  addOpen={addOpen} setAddOpen={setAddOpen}></CustomerFeedbackAddForm>
 
       {/* Edit Modal HTML */}
-      <NewsUpdateForm></NewsUpdateForm>
+      <CustomerFeedbackUpdateForm></CustomerFeedbackUpdateForm>
       {/* Delete Modal HTML */}
       <div id="deleteEmployeeModal" className="modal fade">
         <div className="modal-dialog">
@@ -256,7 +222,8 @@ function News() {
                   defaultValue="İptal"
                 />
                 <Button
-                  onClick={() => newsService.delete(id)}
+                  onClick={()=> CustomerfeedbackService.delete(id)}
+
                   inverted
                   color="green"
                 >
@@ -269,6 +236,7 @@ function News() {
       </div>
     </div>
   );
+
 }
 
-export default News;
+export default CustomerFeedback

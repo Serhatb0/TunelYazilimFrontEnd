@@ -4,24 +4,35 @@ import { useParams } from "react-router-dom";
 import { Button, Card, Image, Table } from "semantic-ui-react";
 import ProductService from "../../services/productService";
 import SiteFeaturesService from "../../services/siteFeaturesService";
+import UploadFilesService from "../../services/uploadFilesService";
+
 import "./ProductPage.css";
 function ProductDteailPage() {
   let { id } = useParams();
 
   const [productFeature, setProductFeature] = useState([]);
-  const [product, setProduct] = useState([]);
+  const [productId, setProductId] = useState([]);
+  const [photo, setphoto] = useState([])
 
   useEffect(() => {
     const siteFeaturesService = new SiteFeaturesService();
     const productService = new ProductService();
 
-    productService.getProductById(id)
-    .then(result => setProduct(result.data.data))
+    if(id === undefined){
+
+    }else{
+       productService.getProductById(id)
+    .then(result => setProductId(result.data.data))
 
     siteFeaturesService
       .getFeaturesByProdutId(id)
       .then((result) => setProductFeature(result.data.data));
-  }, []);
+
+
+      UploadFilesService.getFilesProductId(id).then((result => setphoto(result.data.data)))
+    }
+   
+  }, [id]);
   return (
     <div>
       <section
@@ -34,7 +45,7 @@ function ProductDteailPage() {
             className="d-flex h-100 flex-column text-light
             justify-content-center"
           >
-            <h1 className="text-center">E-ticaret</h1>
+            <h1 className="text-center">{productId.productName}</h1>
           </div>
         </div>
       </section>
@@ -44,12 +55,17 @@ function ProductDteailPage() {
             <Card.Group>
               <Card>
                 <Card.Content>
-                  <Image
+                {photo.map((pho)=>(
+                   <Image
                     floated="right"
                     size="large"
-                    src="https://www.startupnedir.com/wp-content/uploads/2017/09/e-ticaret-780x405.jpg"
+                    src={pho.photoUrl}
                   />
-                  <Card.Header>{product.productName}</Card.Header>
+               
+                ))}
+                    
+                 
+                  <Card.Header>{productId.productName}</Card.Header>
                   <Card.Description>
                     Hemen İndirimli Fiyat İçin Sipariş Et
                   </Card.Description>

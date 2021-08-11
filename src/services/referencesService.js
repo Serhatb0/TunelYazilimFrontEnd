@@ -5,8 +5,12 @@ import http from "./httpCommon";
 
 
 export default class ReferencesService{
-    getReferences(){
-        return http.get("/references/getAll")
+    getReferencesAll(){
+        return http.get(`/references/getAll`)
+    }
+
+    getReferences(pageNo,pageSize){
+        return http.get(`/references/findByactiveTrue?pageNo=${pageNo}&pageSize=${pageSize}`)
     }
 
     getReferencesById(id){

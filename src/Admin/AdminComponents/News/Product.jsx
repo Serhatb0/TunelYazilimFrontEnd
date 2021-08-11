@@ -5,59 +5,51 @@ import { Button, Form, Modal, Pagination, Table } from "semantic-ui-react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import BiricikTextInput from "../../../utilities/customFormControls/BiricikTextInput";
+import ProductService from "../../../services/productService";
 import BiricikTextAreaInput from "../../../utilities/customFormControls/BiricikTextAreaInput";
-import NewsService from "../../../services/newsService";
-import { NewsAddForm } from "./NewsAddForm";
-import NewsAddImage from "./NewsAddImage";
-function News() {
+import { ProductAddForm } from "./ProductAddForm";
+import ProductAddImage from "./ProductAddImage";
+function Product() {
   const [pageSize] = useState(10);
   const [activePage, setActivePage] = useState(1);
-  const [total, setTotal] = useState();
-  const [news, setNews] = useState([]);
-  const [newsId, setNewsId] = useState([]);
-  const [addImageOpen, setAddImageOpen] = useState(false);
-
+  const [total, setTotal] = useState()
+  const [product, setProduct] = useState([]);
+  const [productId, setProductId] = useState([]);
   const [id, setId] = useState();
+  const [addImageOpen, setAddImageOpen] = useState(false)
   const [open, setOpen] = useState(false);
   const [addOpen, setAddOpen] = useState(false);
-  const newsService = new NewsService();
+  const productService = new ProductService();
   useEffect(() => {
-    if(activePage === 0){
+    productService.getProduct(activePage,pageSize).then((result) => setProduct(result.data.data))
 
-    }else{
-        newsService
-      .getNews(activePage, pageSize)
-      .then((result) => setNews(result.data.data));
+    productService.getProduct(activePage,pageSize).then((result) => setTotal(result.data.message))
 
-    newsService
-      .getNews(activePage, pageSize)
-      .then((result) => setTotal(result.data.message));
-    }
-  
+   
   }, [activePage]);
-
-
   useEffect(() => {
     if(id === undefined){
 
     }else{
-         newsService.getNewsId(id).then((result) => setNewsId(result.data.data));
+      productService
+      .getProductById(id)
+      .then((result) => setProductId(result.data.data));
     }
- 
+  
   }, [id]);
-
   const handleSelectedPage = (e, { activePage }) => {
     setActivePage(activePage);
+    console.log(activePage);
   };
-  const NewsUpdateForm = () => {
+  const ProductUpdateForm = () => {
     const validationSchema = Yup.object({
-      newsName: Yup.string().required("Zorunlu Alan"),
-      newsDescription: Yup.string().required("Zorunlu Alan"),
+      productName: Yup.string().required("Zorunlu Alan"),
+      productDescription: Yup.string().required("Zorunlu Alan"),
     });
 
     const initialValues = {
-      newsName: newsId.newsName,
-      newsDescription: newsId.newsDescription,
+      productName: productId.productName,
+      productDescription: productId.productDescription,
     };
     return (
       <Modal
@@ -75,29 +67,31 @@ function News() {
         onOpen={() => setOpen(true)}
         open={open}
       >
-        <Modal.Header>Haber Güncelle</Modal.Header>
+        <Modal.Header>Ürun Güncelle</Modal.Header>
         <Modal.Content image>
           <Modal.Description>
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}
               onSubmit={(values) => {
-                newsService.update(id, values);
-                window.location.reload();
+                productService.update(id, values);
+                setTimeout(() => {
+                  window.location.reload();
+                }, 1000);
               }}
             >
               {({ handleSubmit }) => (
                 <Form onSubmit={handleSubmit}>
-                  <label>Haber Adı</label>
+                  <label>Ürun Adı</label>
 
                   <BiricikTextInput
-                    name="newsName"
-                    placeholder="Haber Başlıgı"
+                    name="productName"
+                    placeholder="Ürun Adı"
                   ></BiricikTextInput>
-                  <label>Haber Açıklaması</label>
+                  <label>Ürun Açıklaması</label>
                   <BiricikTextAreaInput
-                    name="newsDescription"
-                    placeholder="Haber Açıklaması"
+                    name="productDescription"
+                    placeholder="Ürun Açıklaması"
                   ></BiricikTextAreaInput>
 
                   <Modal.Actions>
@@ -129,7 +123,7 @@ function News() {
             <div className="row">
               <div className="col-sm-6">
                 <h2>
-                  Haber <b>Bilgileri</b>
+                  Ürun <b>Bilgileri</b>
                 </h2>
               </div>
               <div className="col-sm-6">
@@ -140,7 +134,7 @@ function News() {
                   onClick={() => setAddOpen(true)}
                 >
                   <i className="material-icons"></i>{" "}
-                  <span>Yeni Haber Ekle</span>
+                  <span>Yeni Ürun Ekle</span>
                 </a>
               </div>
             </div>
@@ -148,24 +142,24 @@ function News() {
           <Table stackable celled>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Haber Adı</Table.HeaderCell>
-                <Table.HeaderCell>Haber Açıklamsı</Table.HeaderCell>
+                <Table.HeaderCell>Ürun Adı</Table.HeaderCell>
+                <Table.HeaderCell>Ürun Açıklamsı</Table.HeaderCell>
 
                 <Table.HeaderCell></Table.HeaderCell>
               </Table.Row>
             </Table.Header>
 
             <Table.Body>
-              {news.map((news) => (
-                <Table.Row key={news.id}>
-                  <Table.Cell>{news.newsName}</Table.Cell>
-                  <Table.Cell>{news.newsDescription}</Table.Cell>
+              {product.map((pro) => (
+                <Table.Row key={pro.id}>
+                  <Table.Cell>{pro.productName}</Table.Cell>
+                  <Table.Cell>{pro.productDescription}</Table.Cell>
 
                   <Table.Cell>
                     <a
                       href="#editEmployeeModal"
                       className="edit"
-                      onClick={() => setId(news.id)}
+                      onClick={() => setId(pro.id)}
                       data-toggle="modal"
                     >
                       <i
@@ -178,7 +172,7 @@ function News() {
                       </i>
                     </a>
                     <a
-                      onClick={() => setId(news.id)}
+                      onClick={() => setId(pro.id)}
                       href="#deleteEmployeeModal"
                       className="delete"
                       data-toggle="modal"
@@ -191,11 +185,17 @@ function News() {
                         
                       </i>
                     </a>
-                    <a onClick={() => setId(news.id)} href="#">
+                    <a
+                      onClick={() => setId(pro.id)}
+                      href="#"
+
+                    >
                       <i
                         onClick={() => setAddImageOpen(true)}
                         className="bi bi-card-image"
-                      ></i>
+                      >
+                     
+                      </i>
                     </a>
                   </Table.Cell>
                 </Table.Row>
@@ -214,20 +214,19 @@ function News() {
     siblingRange={1}
     totalPages={Math.ceil(
       parseInt(total) / pageSize
-    )}/>
+    )}
+  />
+           
+          
           </div>
         </div>
       </div>
       {/* Edit Modal HTML */}
-      <NewsAddImage
-        setAddImageOpen={setAddImageOpen}
-        addImageOpen={addImageOpen}
-        id={id}
-      ></NewsAddImage>
-      <NewsAddForm addOpen={addOpen} setAddOpen={setAddOpen}></NewsAddForm>
-
+      <ProductAddForm  addOpen={addOpen} setAddOpen={setAddOpen}></ProductAddForm>
+        <ProductAddImage  setAddImageOpen={setAddImageOpen} addImageOpen={addImageOpen} id={id}></ProductAddImage>
       {/* Edit Modal HTML */}
-      <NewsUpdateForm></NewsUpdateForm>
+
+      <ProductUpdateForm></ProductUpdateForm>
       {/* Delete Modal HTML */}
       <div id="deleteEmployeeModal" className="modal fade">
         <div className="modal-dialog">
@@ -256,10 +255,9 @@ function News() {
                   defaultValue="İptal"
                 />
                 <Button
-                  onClick={() => newsService.delete(id)}
-                  inverted
-                  color="green"
-                >
+                  onClick={()=> productService.delete(id)}
+                
+                inverted color="green">
                   Sil
                 </Button>
               </div>
@@ -271,4 +269,4 @@ function News() {
   );
 }
 
-export default News;
+export default Product;

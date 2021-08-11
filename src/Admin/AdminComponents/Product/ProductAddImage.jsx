@@ -2,26 +2,28 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from "react";
-import { Button, Image, Modal } from "semantic-ui-react";
+import { Button, Image, Message, Modal } from "semantic-ui-react";
 import UploadService from "../../../services/uploadFilesService";
-function AddReferencesImage({ id, setAddImageOpen, addImageOpen }) {
+function ProductAddImage({  id, setAddImageOpen, addImageOpen }) {
   const [selectedFiles, setSelectedFiles] = useState();
   const [currentFile, setCurrentFile] = useState();
-  const [ımageReferencesId, setImageReferencesId] = useState([]);
-  const [progress, setProgress] = useState(0);
-  const [snipper, setsnipper] = useState(false);
+  const [ımageProductId, setImageProductId] = useState([]);
+  const [snipper, setsnipper] = useState(true)
+    const [progress, setProgress] = useState(0)
   useEffect(() => {
-    if (id === undefined) {
+    if (id === undefined ) {
     } else {
       setsnipper(true)
-      setImageReferencesId([])
+      setImageProductId([])
       setTimeout(() => {
         setsnipper(false)
-        UploadService.getFilesReferencesId(id).then((result) =>
-          setImageReferencesId(result.data.data)
+        UploadService.getFilesProductId(id).then((result) =>
+        setImageProductId(result.data.data)
         );
     
       }, 3000);
+       
+     
     }
   }, [id]);
   const selectFile = (event) => {
@@ -37,11 +39,13 @@ function AddReferencesImage({ id, setAddImageOpen, addImageOpen }) {
       currentFile: currentFile,
     });
 
-    UploadService.uploadReferences(id, currentFile, (event) => {
-      setProgress({
-        progress: Math.round((100 * event.loaded) / event.total),
-      });
-    });
+    UploadService.uploadProduct(id,currentFile, (event) => {
+        setProgress({
+          progress: Math.round((100 * event.loaded) / event.total),
+        });
+      })
+
+  
 
     setSelectedFiles({
       selectedFiles: undefined,
@@ -63,35 +67,49 @@ function AddReferencesImage({ id, setAddImageOpen, addImageOpen }) {
       onOpen={() => setAddImageOpen(true)}
       open={addImageOpen}
     >
-      <Modal.Header>Referansa Resim Ekle</Modal.Header>
+      <Modal.Header>Ürunlere Resim Ekle</Modal.Header>
       <Modal.Content image>
         <Modal.Description>
           <div>
-            {currentFile && (
-              <div className="progress">
-                <div
-                  className="progress-bar progress-bar-info progress-bar-striped"
-                  role="progressbar"
-                  aria-valuenow={progress.progress}
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  style={{ width: progress.progress + "%" }}
-                >
-                  {progress.progress}%
-                </div>
-              </div>
-            )}
-            <label className="btn btn-default">
+          {currentFile && (
+          <div className="progress">
+            <div
+              className="progress-bar progress-bar-info progress-bar-striped"
+              role="progressbar"
+              aria-valuenow={progress.progress}
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style={{ width: progress.progress + "%" }}
+            >
+              {progress.progress}%
+            </div>
+          </div>
+        )}
+            {ımageProductId.length !== 0 || snipper? (
+              
+              <Message color="red">
+                {ımageProductId.length !== 0 ?(
+                  <div> Sadece Bir Resim Ekliyebilirsiniz<br/>
+                  Yeni Resim Eklemk İçin Diğer Resmi Silin</div>
+                ):(<div>Lutfen Bekleyin...</div>)}
+             
+              
+            </Message>
+             
+            ) : (
+              <label className="btn btn-default">
               <input type="file" onChange={selectFile} />
               <icon className="bi bi-cloud-arrow-up-fill fa-4x"></icon>
             </label>
-            <a
-              onClick={() =>
+            )}
+            {ımageProductId.length !== 0 || snipper?null: (     <a
+              onClick={()=>{
                 setTimeout(() => {
-                  window.location.reload();
-                }, 1000)
-              }
+                    window.location.reload(); 
+                }, 1500);
+              }}
             >
+            
               <button
                 className="btn btn-success"
                 disabled={!selectedFiles}
@@ -99,17 +117,19 @@ function AddReferencesImage({ id, setAddImageOpen, addImageOpen }) {
               >
                 Yükle
               </button>
-            </a>
+            </a>)}
+       
 
             <div className="card">
-              <div className="card-header">Resimler</div>
+              <div className="card-header">Ürüne Ait Resim</div>
               {snipper?<div className="spinner-border text-success" role="status">
   <span className="visually-hidden"></span>
 </div>:null}
-
               <ul className="list-group list-group-flush">
-                {ımageReferencesId &&
-                  ımageReferencesId.map((image) => (
+                {ımageProductId &&
+                  ımageProductId.map((image) => (
+                    
+
                     <li className="list-group-item" key={image.id}>
                       {" "}
                       <Image
@@ -139,7 +159,7 @@ function AddReferencesImage({ id, setAddImageOpen, addImageOpen }) {
               </ul>
             </div>
           </div>
-          <Modal.Actions>
+          <Modal.Actions >
             <Button color="black" onClick={() => setAddImageOpen(false)}>
               İptal
             </Button>
@@ -150,4 +170,4 @@ function AddReferencesImage({ id, setAddImageOpen, addImageOpen }) {
   );
 }
 
-export default AddReferencesImage;
+export default ProductAddImage;

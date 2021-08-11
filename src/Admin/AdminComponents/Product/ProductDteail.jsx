@@ -21,9 +21,14 @@ function ProductDteail() {
   }, []);
 
   useEffect(() => {
-    siteFeaturesService
+    if(id === undefined){
+
+    }else{
+        siteFeaturesService
       .getFeaturesId(id)
       .then((result) => setSiteFeaturesId(result.data.data));
+    }
+  
   }, [id]);
   const ProductUpdateForm = () => {
     const validationSchema = Yup.object({
@@ -157,7 +162,7 @@ function ProductDteail() {
               </div>
             </div>
           </div>
-          <Table unstackable celled>
+          <Table stackable celled>
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Ürun Adı</Table.HeaderCell>
@@ -217,14 +222,7 @@ function ProductDteail() {
             </Table.Body>
           </Table>
 
-          <div className="clearfix">
-            <div className="hint-text">
-              Showing <b>5</b> out of <b>25</b> entries
-            </div>
-            <Pagination
-             defaultActivePage={1} totalPages={5}
-            ></Pagination>
-          </div>
+         
         </div>
       </div>
       {/* Edit Modal HTML */}
@@ -239,7 +237,7 @@ function ProductDteail() {
           <div className="modal-content">
             <form>
               <div className="modal-header">
-                <h4 className="modal-title">Delete Employee</h4>
+                <h4 className="modal-title">Delete</h4>
                 <button
                   type="button"
                   className="close"
