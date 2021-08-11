@@ -25,6 +25,6 @@ export default class ReferencesService{
     }
     
     delete(id){
-        return http.delete(`/references/rejectreferences?id=${id}`)
+        return http.post(`/references/rejectreferences?id=${id}`)
     }
 }
