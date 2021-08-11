@@ -90,7 +90,7 @@ function HomePage() {
                     {" "}
                     <span>
                       Bizim müşterilerimizin memnuniyeti önemlidir
-                      prensipleri ilk sırada görüyoruz.
+                      prensipleri ilk
                     </span>{" "}
                   </div>{" "}
                   <a href="#">Daha Fazla</a>
