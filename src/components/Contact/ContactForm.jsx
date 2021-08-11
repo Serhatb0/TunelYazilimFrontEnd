@@ -32,6 +32,7 @@ const initialValues = {
               validationSchema={validationSchema}
               onSubmit={(values) => {
                contactFormService.add(values);
+               window.location.reload();
               }}
             >
               {({ handleSubmit }) => (

@@ -33,7 +33,7 @@ const initialValues = {
               validationSchema={validationSchema}
               onSubmit={(values) => {
                 orderService.add(values)
-                toast.success();
+                window.location.reload();
               }}
             >
               {({ handleSubmit }) => (

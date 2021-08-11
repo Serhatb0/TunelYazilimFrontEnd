@@ -21,6 +21,6 @@ export default class ProductService {
   }
 
   delete(id) {
-    return http.delete(`/product/delete?id=${id}`);
+    return http.delete(`/product/rejectProduct?id=${id}`);
   }
 }

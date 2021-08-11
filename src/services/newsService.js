@@ -20,7 +20,7 @@ export default class NewsService{
 
     
     delete(id){
-        return http.delete(`/newsname/delete?id=${id}`);
+        return http.delete(`/newsname/rejectNews?id=${id}`);
     }
 
       
