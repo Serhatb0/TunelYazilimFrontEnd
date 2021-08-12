@@ -57,7 +57,7 @@ function References() {
           <div className="accordion" id="accordionExample">
             <div className="row ">
               {references.map((ref) => (
-                <div className="col-4" key={ref.id}>
+                <div className="col-4" key={ref.id} style={{ margin: "2em 0em 0em 0em" }}>
                     
                   <div className="latest-item ">
                   <div
