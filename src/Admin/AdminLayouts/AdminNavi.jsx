@@ -15,6 +15,7 @@ import OnlineOrder from "../AdminComponents/OnlineOrder/OnlineOrder";
 import { Button } from "semantic-ui-react";
 import AboutUs from "../AdminComponents/AboutUs/AboutUs";
 import CustomerFeedback from "../AdminComponents/CustomerFeedback/CustomerFeedback";
+import AdminHomePage from "../AdminComponents/AdminHomePage/AdminHomePage";
 
 export default function EmployeeNavi() {
   return (
@@ -39,10 +40,10 @@ export default function EmployeeNavi() {
           <hr className="sidebar-divider my-0" />
 
           <li className="nav-item active">
-            <a className="nav-link">
+            <Nav.Link as={NavLink} to="/admin">
               <i className="fas fa-fw fa-tachometer-alt" />
               <span>Serhat Biricik</span>
-            </a>
+            </Nav.Link>
           </li>
 
           <hr className="sidebar-divider" />
@@ -467,6 +468,11 @@ export default function EmployeeNavi() {
             </nav>
             <div className="tab-content col-12" id="nav-tabContent">
               <Switch>
+              <Route
+                  exact
+                  path="/admin"
+                  component={AdminHomePage}
+                />
                 <Route
                   exact
                   path="/admin/contactView"

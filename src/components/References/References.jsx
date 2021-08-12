@@ -33,13 +33,8 @@ function References() {
         .then((result) => setReferencesId(result.data.data));
     }
   }, [id]);
+  console.log(references);
 
-  const handleClick = (e, titleProps) => {
-    const { index } = titleProps;
-    const newIndex = activeIndex === index ? -1 : index;
-
-    setActiveIndex({ activeIndex: newIndex });
-  };
 
   return (
     <div>
@@ -79,10 +74,14 @@ function References() {
                       aria-controls={ref.referencesName.replace(" ", "")}
                       className="btn btn-primary p-0 rounded-0 border-0"
                     >
-                      <img
+                      {ref?.photos.map((pho)=>(
+                         <img
                         className="img-fluid"
-                        src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZGV2ZWxvcGVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                        src={pho.photoUrl}
                       />
+                      ))}
+                          
+                    
                       <div className="overlay d-flex flex-column  align-items-center justify-content-center">
                         <i class="bi bi-chevron-double-down"></i>
                       </div>
